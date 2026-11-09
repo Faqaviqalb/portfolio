@@ -26,7 +26,6 @@ onMounted(() => {
       <ServicesSection />
       <StackBand />
       <ProjectsSection />
-      <TestimonialsSection />
       <ContactSection />
     </main>
     <SiteFooter />

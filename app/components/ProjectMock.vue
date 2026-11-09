@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // CSS-drawn device mockups used until real screenshots are added.
-defineProps<{ kind: 'dashboard' | 'mobile' | 'landing' }>()
+defineProps<{ kind: 'dashboard' | 'mobile' | 'landing' | 'storefront' }>()
 const bars = [40, 62, 48, 80, 58, 92, 70]
 </script>
 
@@ -31,6 +31,14 @@ const bars = [40, 62, 48, 80, 58, 92, 70]
       </div>
     </div>
 
+    <!-- Storefront -->
+    <div v-else-if="kind === 'storefront'" class="screen store">
+      <div class="nav"><i /><span><i v-for="n in 4" :key="n" /></span><b /></div>
+      <div class="banner"><div class="txt"><em /><strong /><u /></div><div class="device" /></div>
+      <div class="cats"><i v-for="n in 5" :key="n" /></div>
+      <div class="products"><b v-for="n in 4" :key="n"><span /><em /><strong /></b></div>
+    </div>
+
     <!-- Landing -->
     <div v-else class="screen land">
       <div class="nav"><i /><span><i v-for="n in 4" :key="n" /></span></div>
@@ -46,6 +54,7 @@ const bars = [40, 62, 48, 80, 58, 92, 70]
 .mock { position: absolute; inset: 0; display: grid; place-items: center; padding: 22px; }
 .mock.dashboard { background: linear-gradient(160deg, var(--sand), var(--cream-2)); }
 .mock.mobile { background: linear-gradient(160deg, var(--sage-dark), var(--sage)); }
+.mock.storefront { background: linear-gradient(160deg, var(--sage-tint), var(--cream-2)); }
 .mock.landing { background: linear-gradient(160deg, #e9e2d5, #f5f0e7); }
 
 .screen { width: 92%; aspect-ratio: 16 / 10; background: var(--white); border-radius: 10px; box-shadow: 0 18px 34px -16px rgba(40,45,30,.35); overflow: hidden; transform: perspective(900px) rotateX(6deg) rotateY(-6deg); transition: transform .5s ease; }
@@ -81,6 +90,27 @@ const bars = [40, 62, 48, 80, 58, 92, 70]
 .rows { display: grid; gap: 6px; }
 .rows i { height: 7px; border-radius: 3px; background: rgba(255,255,255,.12); }
 .p2 .rows i { background: var(--cream-2); }
+
+/* storefront (RTL: logo on the right) */
+.store { display: flex; flex-direction: column; direction: rtl; }
+.store .nav { display: flex; align-items: center; gap: 8px; padding: 7px 10px; }
+.store .nav > i { width: 24px; height: 6px; background: var(--sage-dark); border-radius: 2px; }
+.store .nav span { display: flex; gap: 5px; flex: 1; }
+.store .nav span i { width: 12px; height: 3px; background: var(--line); border-radius: 2px; }
+.store .nav b { width: 18px; height: 8px; border-radius: 4px; background: var(--gold); }
+.store .banner { margin: 0 10px; height: 34%; border-radius: 6px; background: linear-gradient(120deg, var(--sage-dark), var(--sage)); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; }
+.store .banner .txt { display: grid; gap: 4px; width: 45%; }
+.store .banner em { height: 3px; width: 60%; background: rgba(255,255,255,.4); border-radius: 2px; }
+.store .banner strong { height: 7px; width: 90%; background: var(--cream); border-radius: 2px; }
+.store .banner u { height: 7px; width: 35%; background: var(--gold); border-radius: 4px; }
+.store .banner .device { width: 22%; aspect-ratio: 1; border-radius: 6px; background: var(--cream); box-shadow: inset 0 0 0 4px rgba(0,0,0,.08); }
+.store .cats { display: flex; justify-content: space-between; padding: 7px 14px; }
+.store .cats i { width: 12px; height: 12px; border-radius: 50%; background: var(--sage-tint); border: 1px solid var(--sage-soft); }
+.store .products { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 10px 10px; }
+.store .products b { border: 1px solid var(--line); border-radius: 5px; padding: 4px; display: grid; gap: 3px; align-content: start; }
+.store .products span { aspect-ratio: 1; border-radius: 3px; background: var(--cream-2); }
+.store .products em { height: 3px; width: 80%; background: var(--line); border-radius: 2px; }
+.store .products strong { height: 4px; width: 45%; background: var(--gold); border-radius: 2px; }
 
 /* landing */
 .land { display: flex; flex-direction: column; }

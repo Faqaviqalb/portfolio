@@ -7,17 +7,14 @@ export const profile = {
   name: 'Farnaz',
   fullName: 'Farnaz Alizade',
   role: 'Frontend Developer',
-  greeting: "Hello, I'm Farnaz",
-  headline: { before: 'Frontend Developer', mid: 'Building', accent: 'Delightful', after: 'Web Experiences' },
-  intro:
-    'I turn designs and ideas into fast, accessible and pixel-perfect interfaces — with Vue, Nuxt and TypeScript at the heart of my toolkit.',
+  greeting: "I'm Farnaz Alizade",
+  headline: { before: 'Frontend', mid: '', accent: 'Developer', after: '' },
+  intro: '4+ years of experience in Vue, Nuxt and TypeScript',
   // Put your photo in /public (e.g. /public/me.jpg) and set: photo: '/me.jpg'
-  photo: '',
-  cv: '', // e.g. '/cv.pdf' — put the file in /public
+  photo: '/me.jpg',
+  cv: '', // e.g. '/cv.pdf' (put the file in /public)
   email: 'hello@example.com',
   location: 'Your City, Country',
-  available: true,
-  badgeWords: 'CLEAN CODE • ACCESSIBLE • PERFORMANT • ',
 }
 
 export const socials = [
@@ -32,42 +29,32 @@ export const nav = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
-  { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export const about = {
-  quote: 'Great interfaces aren’t just seen — they’re felt.',
+  title: 'How I work',
+  // Tip: a sentence or two only you could write (how you got into this,
+  // what you enjoy, where you're based) does more than any big claim.
   text:
-    "I'm a frontend developer with 5+ years of experience building user-centred web apps for startups and product teams. I care about the details: smooth interactions, semantic markup, design systems that scale and Lighthouse scores in the green.",
-  stats: [
-    { icon: 'calendar', value: '5+', label: 'Years Experience' },
-    { icon: 'briefcase', value: '40+', label: 'Projects Shipped' },
-    { icon: 'users', value: '20+', label: 'Happy Clients' },
-    { icon: 'gauge', value: '95+', label: 'Avg. Lighthouse Score' },
-  ],
+    "I'm a frontend developer and I mostly work with Vue and Nuxt. My favourite part of the job is taking a design file and turning it into something people can actually click through, then sweating the small things: spacing, loading speed, and how it feels on a phone.",
 }
 
 export const services = [
   {
     icon: 'layout',
-    title: 'Web Applications',
-    text: 'Scalable SPAs and SSR apps with Vue & Nuxt — clean architecture, typed end to end.',
+    title: 'Websites & online stores',
+    text: 'From a single landing page to a full store, built so your team can update the content themselves.',
   },
   {
     icon: 'pen',
-    title: 'Design to Code',
-    text: 'Pixel-perfect, responsive implementation of Figma designs with delightful motion.',
-  },
-  {
-    icon: 'layers',
-    title: 'Design Systems',
-    text: 'Reusable, documented component libraries that keep teams fast and consistent.',
+    title: 'Designs into code',
+    text: "Send me your Figma file and I'll build it so it looks right on phones, tablets and laptops.",
   },
   {
     icon: 'gauge',
-    title: 'Performance & a11y',
-    text: 'Core Web Vitals tuning and WCAG-compliant, inclusive interfaces for everyone.',
+    title: 'Fixing slow sites',
+    text: "If your site feels slow or clunky, I'll find out why and fix it.",
   },
 ]
 
@@ -81,56 +68,29 @@ export type Project = {
   subtitle: string
   tags: string[]
   href: string
-  repo?: string
+  // One or two short sentences, written for visitors (not developers).
+  summary: string
+  // 3–4 short highlights, shown with a star before each.
+  highlights: string[]
   // Optional screenshot in /public; if empty a styled mockup is drawn.
   image?: string
-  mock: 'dashboard' | 'mobile' | 'landing'
+  mock: 'dashboard' | 'mobile' | 'landing' | 'storefront'
 }
 
 export const projects: Project[] = [
   {
-    title: 'Ledgerly',
-    subtitle: 'Finance Dashboard',
-    tags: ['Nuxt', 'TypeScript', 'Charts'],
-    href: '#',
-    repo: '#',
-    mock: 'dashboard',
-  },
-  {
-    title: 'Greenleaf',
-    subtitle: 'Mobile Banking PWA',
-    tags: ['Vue', 'PWA', 'Pinia'],
-    href: '#',
-    repo: '#',
-    mock: 'mobile',
-  },
-  {
-    title: 'Havenly',
-    subtitle: 'Interior Studio Website',
-    tags: ['Nuxt', 'GSAP', 'SEO'],
-    href: '#',
-    repo: '#',
-    mock: 'landing',
-  },
-]
-
-export const testimonials = [
-  {
-    quote:
-      'Farnaz turned our complex dashboard designs into a fast, polished product. Her attention to detail and communication were outstanding.',
-    name: 'James Carter',
-    role: 'CTO, Ledgerly',
-  },
-  {
-    quote:
-      'Our Lighthouse scores went from orange to green across the board. She is a rare developer who cares about design and performance equally.',
-    name: 'Sophia Bennett',
-    role: 'Product Manager, Greenleaf',
-  },
-  {
-    quote:
-      'The component library she built is still the backbone of our product. Clean, documented and a joy to work with.',
-    name: 'Liam Chen',
-    role: 'Design Lead, Havenly',
+    title: 'Farahoush',
+    subtitle: 'Smart-Home Brand Website & Store',
+    tags: ['Nuxt', 'SSR', 'Headless CMS', 'SEO'],
+    href: 'https://farahoush.com',
+    mock: 'storefront',
+    summary:
+      'Website and online store for a smart-home brand. I built it with Nuxt, and their team edits all of the content themselves.',
+    highlights: [
+      'Pages are prepared on the server, so they open quickly',
+      'Every page and translation can be edited without a developer',
+      'Works well on phones as well as desktops',
+      'Set up so Google can find and understand each page',
+    ],
   },
 ]

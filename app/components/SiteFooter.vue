@@ -8,7 +8,7 @@ const year = new Date().getFullYear()
     <div class="container cols">
       <div class="brand">
         <span class="mark">{{ profile.name.charAt(0) }}<AppIcon name="spark" class="spark" /></span>
-        <p>{{ profile.fullName }} — crafting fast, accessible and delightful interfaces for the web.</p>
+        <p>Frontend developer working with Vue and Nuxt.</p>
       </div>
       <div>
         <h4>Quick Links</h4>

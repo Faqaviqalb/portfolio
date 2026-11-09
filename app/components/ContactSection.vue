@@ -19,15 +19,14 @@ function submit() {
   <section id="contact" class="section">
     <div class="container box reveal">
       <div class="info">
-        <span class="eyebrow">Get in touch <AppIcon name="spark" class="spark" /></span>
-        <h2 class="section-title">Let’s Build Something<br />Amazing Together</h2>
-        <p>Have a project in mind or just want to say hello? I’d love to hear from you.</p>
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-title">Want to work together?</h2>
+        <p>Tell me a little about what you need and I’ll get back to you.</p>
 
         <ul>
           <li><span class="icon-circle"><AppIcon name="mail" /></span><a :href="`mailto:${profile.email}`">{{ profile.email }}</a></li>
           <li><span class="icon-circle"><AppIcon name="map-pin" /></span>{{ profile.location }}</li>
         </ul>
-        <LeafSprig class="deco" />
       </div>
 
       <form class="form" @submit.prevent="submit">
@@ -39,17 +38,16 @@ function submit() {
           <span>Project type</span>
           <select v-model="form.type">
             <option value="">Select one…</option>
-            <option>Web application</option>
-            <option>Website / landing page</option>
-            <option>Design system</option>
-            <option>Performance &amp; accessibility audit</option>
-            <option>Full-time role</option>
+            <option>A new website or store</option>
+            <option>Building a design I already have</option>
+            <option>Fixing a slow site</option>
+            <option>A job opening</option>
             <option>Something else</option>
           </select>
         </label>
-        <label><span>Message</span><textarea v-model="form.message" rows="5" required placeholder="Tell me about your project…" /></label>
+        <label><span>Message</span><textarea v-model="form.message" rows="5" required placeholder="A few lines is plenty" /></label>
         <button class="btn btn-gold" type="submit">Send Message <AppIcon name="send" /></button>
-        <p v-if="sent" class="note" role="status">Your mail app should open with the message ready to send. ✨</p>
+        <p v-if="sent" class="note" role="status">Your mail app should open with the message ready to send.</p>
       </form>
     </div>
   </section>
@@ -62,7 +60,6 @@ function submit() {
 .info ul { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 14px; position: relative; z-index: 1; }
 .info li { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; }
 .info li a:hover { color: var(--sage); }
-.deco { position: absolute; right: 10px; bottom: -30px; width: 110px; opacity: .55; transform: rotate(-8deg); }
 
 .form { padding: 44px; display: grid; gap: 16px; align-content: start; }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

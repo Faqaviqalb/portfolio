@@ -6,9 +6,9 @@ import { services } from '~/data/site'
   <section id="services" class="section">
     <div class="container grid">
       <div class="head reveal">
-        <span class="eyebrow">What I do <AppIcon name="spark" class="spark" /></span>
-        <h2 class="section-title">Services I Offer</h2>
-        <p>From the first wireframe to production deploy, I build interfaces people enjoy using.</p>
+        <span class="eyebrow">What I do</span>
+        <h2 class="section-title">How I can help</h2>
+        <p>The kinds of projects people usually bring to me.</p>
       </div>
 
       <article v-for="(s, i) in services" :key="s.title" class="card reveal" :style="{ transitionDelay: `${i * 90}ms` }">
@@ -22,7 +22,7 @@ import { services } from '~/data/site'
 </template>
 
 <style scoped>
-.grid { display: grid; grid-template-columns: 1.1fr repeat(4, 1fr); gap: 20px; align-items: stretch; }
+.grid { display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); gap: 20px; align-items: stretch; }
 .head p { margin-top: 14px; color: var(--muted); font-size: 15px; max-width: 240px; }
 
 .card {
