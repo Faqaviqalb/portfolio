@@ -1,32 +1,13 @@
 <script setup lang="ts">
-// Reveal-on-scroll for any element with the `.reveal` class.
-onMounted(() => {
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible')
-          io.unobserve(e.target)
-        }
-      }
-    },
-    { threshold: 0.12 },
-  )
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el))
-  onBeforeUnmount(() => io.disconnect())
-})
+const route = useRoute()
 </script>
 
 <template>
   <div>
-    <SiteHeader />
+    <!-- Re-mounted per page so its section tracking starts fresh. -->
+    <SiteHeader :key="route.path" />
     <main>
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <StackBand />
-      <ProjectsSection />
-      <ContactSection />
+      <NuxtPage />
     </main>
     <SiteFooter />
   </div>

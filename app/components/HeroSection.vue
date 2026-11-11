@@ -39,6 +39,12 @@ import { profile, socials } from '~/data/site'
           </div>
         </div>
 
+        <div class="code-card" aria-hidden="true">
+          <div class="dots"><i /><i /><i /></div>
+          <pre><span class="k">&lt;template&gt;</span>
+  <span class="t">&lt;Idea</span> <span class="a">v-model</span>=<span class="s">"design"</span><span class="t">/&gt;</span>
+<span class="k">&lt;/template&gt;</span></pre>
+        </div>
       </div>
     </div>
   </section>
@@ -71,13 +77,28 @@ h1 em { white-space: nowrap; font-style: italic; color: var(--gold); font-weight
 .hint { font-size: 12px; opacity: .8; }
 .hint code { font-size: 11px; background: rgba(255,255,255,.18); padding: 2px 6px; border-radius: 4px; }
 
+.code-card {
+  position: absolute; z-index: 3; left: 0; top: 42%;
+  background: var(--sage-dark); color: var(--cream); border-radius: 14px;
+  padding: 12px 16px 14px; box-shadow: 0 20px 40px -18px rgba(30, 38, 25, .55);
+  animation: float 6s ease-in-out infinite;
+}
+.code-card pre { margin: 8px 0 0; font: 12.5px/1.6 ui-monospace, 'SF Mono', Menlo, monospace; }
+.dots { display: flex; gap: 5px; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: .8; }
+.dots i:nth-child(2) { background: var(--sage-soft); }
+.dots i:nth-child(3) { background: var(--cream); opacity: .5; }
+.k { color: var(--sage-soft); } .t { color: #f0d79a; } .a { color: #d9e2cc; } .s { color: #f6c9a8; }
+@keyframes float { 50% { transform: translateY(-10px); } }
 
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
   .copy { padding-bottom: 10px; }
   .visual { min-height: 0; }
+  .code-card { top: 30%; }
 }
 @media (max-width: 480px) {
+  .code-card { display: none; }
   .mono { font-size: 130px; }
 }
 </style>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { nav, profile, services, socials } from '~/data/site'
 const year = new Date().getFullYear()
+const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 </script>
 
 <template>
@@ -12,11 +13,11 @@ const year = new Date().getFullYear()
       </div>
       <div>
         <h4>Quick Links</h4>
-        <a v-for="n in nav" :key="n.href" :href="n.href">{{ n.label }}</a>
+        <NuxtLink v-for="n in nav" :key="n.href" :to="`/${n.href}`">{{ n.label }}</NuxtLink>
       </div>
       <div>
         <h4>Services</h4>
-        <a v-for="s in services" :key="s.title" href="#services">{{ s.title }}</a>
+        <NuxtLink v-for="s in services" :key="s.title" to="/#services">{{ s.title }}</NuxtLink>
       </div>
       <div>
         <h4>Follow Me</h4>
@@ -28,7 +29,7 @@ const year = new Date().getFullYear()
     <div class="bottom">
       <div class="container inner">
         <span>© {{ year }} {{ profile.fullName }}. Built with Nuxt.</span>
-        <a href="#home" class="top" aria-label="Back to top"><AppIcon name="arrow-up" /></a>
+        <a href="#" class="top" aria-label="Back to top" @click.prevent="scrollTop"><AppIcon name="arrow-up" /></a>
       </div>
     </div>
   </footer>

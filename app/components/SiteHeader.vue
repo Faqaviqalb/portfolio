@@ -3,7 +3,8 @@ import { nav, profile } from '~/data/site'
 
 const open = ref(false)
 const scrolled = ref(false)
-const active = ref('#home')
+const route = useRoute()
+const active = ref(route.path === '/' ? '#home' : '#work')
 
 onMounted(() => {
   const onScroll = () => (scrolled.value = window.scrollY > 10)
@@ -30,22 +31,22 @@ onMounted(() => {
 <template>
   <header class="header" :class="{ scrolled }">
     <div class="container bar">
-      <a href="#home" class="logo" aria-label="Home">
+      <NuxtLink to="/#home" class="logo" aria-label="Home">
         <span class="mark">{{ profile.name.charAt(0) }}<AppIcon name="spark" class="spark" /></span>
         <span class="word">{{ profile.fullName }}<small>{{ profile.role }}</small></span>
-      </a>
+      </NuxtLink>
 
       <nav class="nav" :class="{ open }" aria-label="Main">
-        <a
+        <NuxtLink
           v-for="item in nav"
           :key="item.href"
-          :href="item.href"
+          :to="`/${item.href}`"
           :class="{ active: active === item.href }"
           @click="open = false"
-        >{{ item.label }}</a>
+        >{{ item.label }}</NuxtLink>
       </nav>
 
-      <a href="#contact" class="btn btn-gold cta">Let’s Talk <AppIcon name="arrow-right" /></a>
+      <NuxtLink to="/#contact" class="btn btn-gold cta">Let’s Talk <AppIcon name="arrow-right" /></NuxtLink>
 
       <button class="burger" :aria-expanded="open" aria-label="Toggle menu" @click="open = !open">
         <AppIcon :name="open ? 'x' : 'menu'" />
