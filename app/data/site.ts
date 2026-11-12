@@ -21,6 +21,7 @@ export const profile = {
 
 export const socials = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/farnaz-alizade-769325231/', icon: 'linkedin' },
+  { label: 'Telegram', href: 'https://t.me/Farnazqaviqalb', icon: 'telegram' },
 ]
 
 export const nav = [

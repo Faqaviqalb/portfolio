@@ -26,6 +26,7 @@ const paths: Record<string, string> = {
   menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
   x: '<path d="M18 6 6 18M6 6l12 12"/>',
   send: '<path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/>',
+  telegram: '<path d="M21.5 4.5 2.8 11.7c-.8.3-.8 1.4 0 1.7l4.6 1.6 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.8 3.5c.6.4 1.4.1 1.6-.6l3.2-15.1c.2-.9-.7-1.6-1.5-1.3Z"/><path d="m7.4 15 11-8-8.6 9.6"/>',
 }
 
 // Arrows that point "forward" or "back" get mirrored on right-to-left pages.

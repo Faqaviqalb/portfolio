@@ -21,7 +21,7 @@ export const profile = {
 
 export const socials = enSocials.map((s) => ({
   ...s,
-  label: s.icon === 'linkedin' ? 'لینکدین' : s.label,
+  label: ({ linkedin: 'لینکدین', telegram: 'تلگرام' } as Record<string, string>)[s.icon] ?? s.label,
 }))
 
 export const nav = [
