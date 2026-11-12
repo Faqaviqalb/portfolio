@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const site = useSite()
+const asset = useAsset()
 const { localeProperties } = useI18n()
 
 useHead({
@@ -8,6 +9,7 @@ useHead({
     lang: () => localeProperties.value.language,
     dir: () => localeProperties.value.dir,
   },
+  link: [{ rel: 'icon', type: 'image/svg+xml', href: asset('/favicon.svg') }],
 })
 useSeoMeta({
   title: () => site.value.meta.title,

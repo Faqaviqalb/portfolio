@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const site = useSite()
+const asset = useAsset()
 const profile = computed(() => site.value.profile)
 const projects = computed(() => site.value.projects)
 const localePath = useLocalePath()
@@ -19,7 +20,7 @@ useSeoMeta({
   description: () => project.value!.summary,
   ogTitle: () => `${project.value!.title} — ${profile.value.fullName}`,
   ogDescription: () => project.value!.summary,
-  ogImage: () => project.value!.image,
+  ogImage: () => project.value!.image && asset(project.value!.image),
 })
 
 useReveal()
@@ -57,9 +58,9 @@ useReveal()
         </div>
 
         <div class="cover reveal">
-          <a v-if="project.image" :href="project.image" target="_blank" class="frame" :aria-label="site.ui.openFull(site.ui.screenshot(project.title))">
+          <a v-if="project.image" :href="asset(project.image)" target="_blank" class="frame" :aria-label="site.ui.openFull(site.ui.screenshot(project.title))">
             <span class="bar"><i /><i /><i /></span>
-            <img :src="project.image" :alt="site.ui.screenshot(project.title)" />
+            <img :src="asset(project.image)" :alt="site.ui.screenshot(project.title)" />
           </a>
           <div v-else class="mock-wrap">
             <ProjectMock :kind="project.mock" />
@@ -96,9 +97,9 @@ useReveal()
 
         <div v-if="s.shots?.length" class="gallery">
           <figure v-for="shot in s.shots" :key="shot.src" class="shot reveal" :class="{ mobile: shot.mobile }">
-            <a :href="shot.src" target="_blank" :class="shot.mobile ? 'phone' : 'frame'" :aria-label="site.ui.openFull(shot.alt)">
+            <a :href="asset(shot.src)" target="_blank" :class="shot.mobile ? 'phone' : 'frame'" :aria-label="site.ui.openFull(shot.alt)">
               <span v-if="!shot.mobile" class="bar"><i /><i /><i /></span>
-              <img :src="shot.src" :alt="shot.alt" loading="lazy" />
+              <img :src="asset(shot.src)" :alt="shot.alt" loading="lazy" />
             </a>
             <figcaption v-if="shot.caption">{{ shot.caption }}</figcaption>
           </figure>

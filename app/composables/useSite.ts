@@ -19,3 +19,10 @@ export function useDigits() {
   return (value: string | number) =>
     locale.value === 'fa' ? String(value).replace(/\d/g, (d) => faDigits[+d]!) : String(value)
 }
+
+// Turns a /public path like '/me.jpg' into one that also works when the
+// site lives in a sub-folder (e.g. GitHub Pages: /portfolio/me.jpg).
+export function useAsset() {
+  const base = useRuntimeConfig().app.baseURL.replace(/\/$/, '')
+  return (path: string) => (path.startsWith('/') ? base + path : path)
+}

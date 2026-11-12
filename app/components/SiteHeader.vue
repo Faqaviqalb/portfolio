@@ -6,6 +6,7 @@ const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const { locale } = useI18n()
 const switchTo = useLocaleSwitch()
+const router = useRouter()
 const langs = [
   { code: 'en', label: 'EN', name: 'English' },
   { code: 'fa', label: 'فا', name: 'فارسی' },
@@ -60,7 +61,7 @@ onMounted(() => {
         <a
           v-for="l in langs"
           :key="l.code"
-          :href="switchLocalePath(l.code)"
+          :href="router.resolve(switchLocalePath(l.code)).href"
           :lang="l.code"
           :hreflang="l.code"
           :title="l.name"

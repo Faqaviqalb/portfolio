@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const site = useSite()
+const asset = useAsset()
 const localePath = useLocalePath()
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
 </script>
@@ -15,7 +16,7 @@ const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
       <div class="grid">
         <article v-for="(p, i) in site.projects" :key="p.slug" class="project reveal" :style="{ transitionDelay: `${i * 100}ms` }">
           <NuxtLink :to="localePath(`/projects/${p.slug}`)" class="thumb" :aria-label="site.ui.caseStudyOf(p.title)">
-            <img v-if="p.image" :src="p.image" :alt="site.ui.screenshot(p.title)" loading="lazy" />
+            <img v-if="p.image" :src="asset(p.image)" :alt="site.ui.screenshot(p.title)" loading="lazy" />
             <ProjectMock v-else :kind="p.mock" />
           </NuxtLink>
 

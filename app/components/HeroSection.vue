@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const site = useSite()
+const asset = useAsset()
 const profile = computed(() => site.value.profile)
 </script>
 
@@ -24,7 +25,7 @@ const profile = computed(() => site.value.profile)
 
       <div class="visual">
         <div class="arch">
-          <img v-if="profile.photo" :src="profile.photo" :alt="profile.fullName" />
+          <img v-if="profile.photo" :src="asset(profile.photo)" :alt="profile.fullName" />
           <div v-else class="placeholder">
             <span class="mono">{{ profile.monogram }}</span>
             <span class="hint">Add your photo in <code>app/data/site.ts</code></span>
