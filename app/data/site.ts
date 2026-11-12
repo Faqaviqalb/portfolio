@@ -6,22 +6,21 @@
 export const profile = {
   name: 'Farnaz',
   fullName: 'Farnaz Alizade',
+  // The letter in the logo (kept the same in every language).
+  monogram: 'F',
   role: 'Frontend Developer',
   greeting: "I'm Farnaz Alizade",
   headline: { before: 'Frontend', mid: '', accent: 'Developer', after: '' },
-  intro: '4+ years of experience in Vue, Nuxt and TypeScript',
+  intro: '3+ years of frontend experience, mostly with Vue, Nuxt and TypeScript',
   // Put your photo in /public (e.g. /public/me.jpg) and set: photo: '/me.jpg'
   photo: '/me.jpg',
   cv: '', // e.g. '/cv.pdf' (put the file in /public)
-  email: 'hello@example.com',
-  location: 'Your City, Country',
+  email: 'Farnaaz.alizade@gmail.com',
+  location: 'Remote',
 }
 
 export const socials = [
-  { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/', icon: 'linkedin' },
-  { label: 'CodePen', href: 'https://codepen.io/', icon: 'code' },
-  { label: 'Email', href: `mailto:${profile.email}`, icon: 'mail' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/farnaz-alizade-769325231/', icon: 'linkedin' },
 ]
 
 export const nav = [
@@ -29,7 +28,6 @@ export const nav = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
-  { label: 'Contact', href: '#contact' },
 ]
 
 export const about = {
@@ -37,19 +35,19 @@ export const about = {
   // Tip: a sentence or two only you could write (how you got into this,
   // what you enjoy, where you're based) does more than any big claim.
   text:
-    "I'm a frontend developer and I mostly work with Vue and Nuxt. My favourite part of the job is taking a design file and turning it into something people can actually click through, then sweating the small things: spacing, loading speed, and how it feels on a phone.",
+    "I'm a frontend developer and I mostly work with Vue and Nuxt. My favourite part of the job is taking a design and turning it into something people can actually click through.",
 }
 
 export const services = [
   {
     icon: 'layout',
     title: 'Websites & online stores',
-    text: 'From a single landing page to a full store, built so your team can update the content themselves.',
+    text: 'From a simple page to a full store, built so your team can update the content themselves.',
   },
   {
-    icon: 'pen',
-    title: 'Designs into code',
-    text: "Send me your Figma file and I'll build it so it looks right on phones, tablets and laptops.",
+    icon: 'code',
+    title: 'Responsive layouts',
+    text: "I'll build your site so it looks right on phones, tablets and laptops.",
   },
   {
     icon: 'gauge',
@@ -60,7 +58,7 @@ export const services = [
 
 export const stack = [
   'Vue', 'Nuxt', 'TypeScript', 'JavaScript', 'HTML5', 'CSS / Sass',
-  'Tailwind', 'Pinia', 'Vite', 'Vitest', 'Storybook', 'Figma', 'Git',
+  'Tailwind', 'Pinia', 'Vite', 'Vitest', 'Storybook', 'Git',
 ]
 
 export type Shot = {
@@ -113,6 +111,7 @@ export const projects: Project[] = [
     title: 'Farahoush Smart Home App',
     subtitle: 'Installable Smart-Home Control App (PWA)',
     tags: ['Vue 3', 'TypeScript', 'MQTT', 'PWA', 'Pinia', 'i18n'],
+    image: '/projects/smart-home-app/home.jpg',
     mock: 'mobile',
     summary:
       'The app people use to run their Farahoush smart home from their phone. Lights, curtains, thermostats, door locks, valves and TV remotes all respond in real time, and it installs like a native app.',
@@ -120,7 +119,7 @@ export const projects: Project[] = [
       'Controls 40+ kinds of devices, from smart switches and thermostats to garage doors and elevators',
       'Devices react instantly, with live status sent back from the home',
       'Add a new device by scanning the QR code on its box',
-      'Scenes, schedules, PIN-locked actions and six languages, including right-to-left Persian and Arabic',
+      'Scenes, schedules, PIN-locked actions and six languages',
     ],
     caseStudy: {
       facts: [
@@ -130,8 +129,6 @@ export const projects: Project[] = [
         { label: 'Languages', value: 'English, Persian, Arabic, Russian, Turkish, Uzbek' },
       ],
       privateNote: 'This app is only available to Farahoush customers, so there is no public link.',
-      // Suggested screenshots: home with rooms, a device control screen
-      // (thermostat or curtain), the scenario editor, QR onboarding.
       overview: [
         'Farahoush makes smart-home hardware: touch switches, thermostats, curtain motors, door locks, valves, relays and more. This app is the remote control for all of it. Homeowners sign in, see every room in their house and control each device from their phone, wherever they are.',
         'It is a web app that installs to the home screen like a native one, so a single codebase serves iPhone, Android and desktop users.',
@@ -148,11 +145,18 @@ export const projects: Project[] = [
             'Curtains, door locks, garage doors and elevators',
             'Water and gas valves, smart bathroom controls and IR remotes',
           ],
+          shots: [
+            { src: '/projects/smart-home-app/devices.jpg', alt: 'Device list with a four-channel light switch open beside it', caption: 'Four-channel light switch' },
+            { src: '/projects/smart-home-app/mobile-switch.jpg', alt: 'Light switch controls on a phone', caption: 'The same switch on a phone', mobile: true },
+          ],
         },
         {
           title: 'Real-time control',
           body: [
             'The app talks to the home over MQTT, a lightweight messaging protocol made for connected devices. When you tap a switch the command reaches the device right away, and the device reports its new state back, so the screen always shows what is really happening in the house, even if someone changed it from the wall switch.',
+          ],
+          shots: [
+            { src: '/projects/smart-home-app/home.jpg', alt: 'Home screen with local weather, room filters and device cards, with an evaporative cooler open beside it', caption: 'Home screen with an evaporative cooler open' },
           ],
         },
         {
@@ -161,12 +165,28 @@ export const projects: Project[] = [
             'Devices are grouped by room, and the home screen shows the local weather alongside them. Scenarios let people trigger several devices at once ("Good night" turns off the lights and closes the curtains), and schedules run them automatically at set times.',
             'Sensitive actions, such as unlocking a door, can be protected with a PIN.',
           ],
+          shots: [
+            { src: '/projects/smart-home-app/rooms.jpg', alt: 'Room list with photos, and the editor for the bathroom room', caption: 'Rooms, each with its own photo' },
+            { src: '/projects/smart-home-app/scenarios.jpg', alt: 'Scenario list with the "Leaving home" scenario open for editing', caption: 'Editing the "Leaving home" scenario' },
+            { src: '/projects/smart-home-app/mobile-room.jpg', alt: 'Bathroom room with its devices on a phone', caption: 'A room on a phone', mobile: true },
+          ],
         },
         {
           title: 'Easy setup, in six languages',
           body: [
             'Adding a new device is as simple as scanning the QR code on its box. People can sign up with their mobile number (with a one-time code) or with email.',
-            'The interface is translated into six languages and switches fully to right-to-left for Persian and Arabic. Time zones are detected automatically, so schedules run at the right local time.',
+            'The interface is translated into six languages, and time zones are detected automatically, so schedules run at the right local time.',
+          ],
+        },
+        {
+          title: 'Light and dark, on every screen size',
+          body: [
+            'The frosted-glass interface comes in light and dark themes. On a desktop the menu sits at the side and devices open in a panel next to the list; on a phone the menu moves to a bottom tab bar and each device opens full screen.',
+          ],
+          shots: [
+            { src: '/projects/smart-home-app/home-dark.jpg', alt: 'Home screen in dark mode', caption: 'Dark mode' },
+            { src: '/projects/smart-home-app/mobile-home.jpg', alt: 'Home screen on a phone in light mode', caption: 'Home on a phone', mobile: true },
+            { src: '/projects/smart-home-app/mobile-home-dark.jpg', alt: 'Home screen on a phone in dark mode', caption: 'Home in dark mode', mobile: true },
           ],
         },
       ],
@@ -185,14 +205,13 @@ export const projects: Project[] = [
     highlights: [
       'Pages are prepared on the server, so they open quickly',
       'Every page and translation can be edited without a developer',
-      'Works well on phones as well as desktops',
       'Set up so Google can find and understand each page',
     ],
     caseStudy: {
       facts: [
         { label: 'Role', value: 'Frontend developer' },
         { label: 'Type', value: 'Brand website & product catalogue' },
-        { label: 'Built with', value: 'Nuxt, Tailwind, GSAP' },
+        { label: 'Built with', value: 'Nuxt, Tailwind' },
         { label: 'Content', value: 'Managed in the Farahoush Admin Panel' },
       ],
       overview: [
@@ -252,14 +271,14 @@ export const projects: Project[] = [
       'Drag-and-drop page builder: define reusable components with nested sections, then fill and reorder them',
       'Products, categories, tags, attributes, blog posts, comments, forms and submissions in one place',
       'Roles and permissions control what each staff member can see and edit, with an activity log',
-      'Built-in SEO tools (meta tags, structured data, robots.txt, llms.txt), analytics charts and a light/dark right-to-left interface',
+      'Built-in SEO tools (meta tags, structured data, robots.txt, llms.txt), analytics charts and light and dark themes',
     ],
     caseStudy: {
       facts: [
         { label: 'Role', value: 'Frontend developer' },
         { label: 'Type', value: 'Content management system' },
         { label: 'Built with', value: 'Vue 3, Pinia, Tailwind, Vite' },
-        { label: 'Interface', value: 'Persian, right-to-left, light and dark' },
+        { label: 'Interface', value: 'Persian, light and dark' },
       ],
       privateNote: 'This is an internal tool for the Farahoush team, so there is no public link.',
       // Suggested screenshots: dashboard, page builder, product editor,
@@ -305,7 +324,7 @@ export const projects: Project[] = [
     slug: 'rooritm',
     title: 'Rooritm',
     subtitle: 'Music Streaming App & Admin Panel',
-    tags: ['Vue 3', 'Vite', 'PWA', 'Audio Player', 'CMS', 'RTL'],
+    tags: ['Vue 3', 'Vite', 'PWA', 'Audio Player', 'CMS'],
     href: 'https://rooritm.com',
     image: '/projects/rooritm/home.webp',
     mock: 'landing',
@@ -322,7 +341,7 @@ export const projects: Project[] = [
         { label: 'Role', value: 'Frontend developer' },
         { label: 'Type', value: 'Music streaming web app & CMS' },
         { label: 'Built with', value: 'Vue 3, Vite' },
-        { label: 'Interface', value: 'Persian, right-to-left, light and dark' },
+        { label: 'Interface', value: 'Persian, light and dark' },
       ],
       overview: [
         'Rooritm is a music streaming platform for Persian music. Listeners can play new releases, watch music videos, follow artists and tune in to live radio, in the browser or as an app installed on their phone.',
@@ -389,4 +408,104 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: 'titan-art-shop',
+    title: 'Titan Art Shop',
+    subtitle: 'Printed T-Shirt Store & Dashboard',
+    tags: ['Nuxt', 'SSR', 'Tailwind', 'Product Variants', 'Dashboard'],
+    href: 'https://titanartshop.com',
+    image: '/projects/titan-art-shop/product.jpg',
+    mock: 'storefront',
+    summary:
+      'An online store for printed T-shirts, with hundreds of designs that each come in many colours, sizes and print positions. It also has a dashboard where the team adds and prices its products.',
+    highlights: [
+      'Every design comes in 10 colours, 5 sizes and several front and back print positions',
+      'Each combination can have its own price, or one price can be applied to all of them at once',
+      'The product photo updates to match the colour the shopper picks',
+      'Hundreds of designs organised into nested categories, from off-road cars to Persian typography',
+    ],
+    caseStudy: {
+      facts: [
+        { label: 'Role', value: 'Frontend developer' },
+        { label: 'Type', value: 'Online store & admin dashboard' },
+        { label: 'Built with', value: 'Nuxt, Tailwind' },
+        { label: 'Interface', value: 'Persian, light and dark' },
+      ],
+      overview: [
+        'Titan Art Shop sells T-shirts printed with original artwork: mountains and campsites, motorbikes and classic cars, cinema, music and Persian calligraphy. Customers pick a design, then choose exactly how they want it made.',
+        'The hardest part of the project was the products themselves. A single design is not one item but hundreds of possible T-shirts, and both the store and the dashboard had to handle that without getting confusing.',
+      ],
+      sections: [
+        {
+          title: 'One design, hundreds of versions',
+          body: [
+            'On the product page shoppers choose a shirt colour, where the print goes on the front (small in the centre, small on the right, medium or large), whether there is a print on the back and how big, and their size. The photo switches to the chosen colour, and the price updates to match the exact combination.',
+          ],
+          points: [
+            '10 shirt colours',
+            '4 front print options and 3 back print options, including no back print',
+            '5 sizes, from M to 3XL, with a size guide',
+          ],
+          shots: [
+            { src: '/projects/titan-art-shop/product.jpg', alt: 'Product page with colour swatches, front and back print position options and size buttons', caption: 'Choosing colour, print position and size' },
+            { src: '/projects/titan-art-shop/mobile-product.jpg', alt: 'The same product options on a phone', caption: 'Product page on a phone', mobile: true },
+          ],
+        },
+        {
+          title: 'A dashboard built for variants',
+          body: [
+            'Adding products was the real challenge. I also built the dashboard where the team sets up each design with all of its colours, sizes and print positions. Every variation can have its own price, and to save time there is an option to apply one price to all of them at once and then change only the exceptions.',
+          ],
+        },
+        {
+          title: 'Browsing hundreds of designs',
+          body: [
+            'Designs are organised into nested categories such as Car → Off-road, Classic and Sport, or Fishing → Trout and Perch. The shop page shows them all as chips under the hero, with sorting and pagination below. Pages are rendered on the server, so they load quickly and search engines can read every product.',
+          ],
+          shots: [
+            { src: '/projects/titan-art-shop/home.jpg', alt: 'Home page with a row of printed T-shirts in different colours', caption: 'Home page' },
+            { src: '/projects/titan-art-shop/shop.jpg', alt: 'Shop page with category chips over a hero image and the product grid below', caption: 'Shop with category filters' },
+          ],
+        },
+      ],
+    },
+  },
 ]
+
+// Page title/description for search engines and the browser tab.
+export const meta = {
+  title: 'Farnaz — Frontend Developer',
+  description: 'Frontend developer crafting fast, accessible and beautiful web experiences with Vue, Nuxt and TypeScript.',
+}
+
+// Short interface labels (buttons, section labels) used by the components.
+export const ui = {
+  home: 'Home',
+  mainNav: 'Main',
+  toggleMenu: 'Toggle menu',
+  language: 'Language',
+  viewWork: 'View My Work',
+  downloadCv: 'Download CV',
+  contactMe: 'Contact Me',
+  aboutEyebrow: 'About me',
+  servicesEyebrow: 'What I do',
+  servicesTitle: 'How I can help',
+  servicesIntro: 'The kinds of projects people usually bring to me.',
+  toolsLabel: 'Tools & Skills',
+  projectsEyebrow: 'Featured projects',
+  projectsTitle: 'Selected Work',
+  caseStudy: 'Case study',
+  screenshot: (title: string) => `${title} screenshot`,
+  caseStudyOf: (title: string) => `${title} case study`,
+  footerTagline: 'Frontend developer working with Vue and Nuxt.',
+  quickLinks: 'Quick Links',
+  servicesHeading: 'Services',
+  contact: 'Contact',
+  backToTop: 'Back to top',
+  allProjects: 'All projects',
+  visit: (host: string) => `Visit ${host}`,
+  stack: 'Stack',
+  overview: 'Overview',
+  nextProject: 'Next project',
+  openFull: (what: string) => `Open “${what}” full size`,
+}

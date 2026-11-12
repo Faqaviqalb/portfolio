@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { about } from '~/data/site'
+const site = useSite()
 </script>
 
 <template>
   <section id="about" class="about">
     <div class="container grid reveal">
       <div>
-        <span class="eyebrow">About me</span>
-        <h2>{{ about.title }}</h2>
+        <span class="eyebrow">{{ site.ui.aboutEyebrow }}</span>
+        <h2>{{ site.about.title }}</h2>
       </div>
 
       <div class="text">
-        <p>{{ about.text }}</p>
+        <p>{{ site.about.text }}</p>
       </div>
 
     </div>

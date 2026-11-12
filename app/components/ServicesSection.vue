@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { services } from '~/data/site'
+const site = useSite()
 </script>
 
 <template>
   <section id="services" class="section">
     <div class="container grid">
       <div class="head reveal">
-        <span class="eyebrow">What I do</span>
-        <h2 class="section-title">How I can help</h2>
-        <p>The kinds of projects people usually bring to me.</p>
+        <span class="eyebrow">{{ site.ui.servicesEyebrow }}</span>
+        <h2 class="section-title">{{ site.ui.servicesTitle }}</h2>
+        <p>{{ site.ui.servicesIntro }}</p>
       </div>
 
-      <article v-for="(s, i) in services" :key="s.title" class="card reveal" :style="{ transitionDelay: `${i * 90}ms` }">
+      <article v-for="(s, i) in site.services" :key="s.title" class="card reveal" :style="{ transitionDelay: `${i * 90}ms` }">
         <span class="ic"><AppIcon :name="s.icon" /></span>
         <h3>{{ s.title }}</h3>
         <p>{{ s.text }}</p>
-        <a href="#contact" class="more">Let’s talk <AppIcon name="arrow-right" /></a>
       </article>
     </div>
   </section>
@@ -36,9 +35,6 @@ import { services } from '~/data/site'
 .ic svg { width: 22px; height: 22px; }
 h3 { font-size: 20px; margin-top: 22px; color: var(--sage-dark); }
 .card p { margin-top: 10px; font-size: 14px; color: var(--muted); flex: 1; }
-.more { margin-top: 20px; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--gold-dark); }
-.more svg { width: 14px; height: 14px; transition: transform .2s; }
-.more:hover svg { transform: translateX(4px); }
 
 @media (max-width: 1080px) {
   .grid { grid-template-columns: repeat(2, 1fr); }

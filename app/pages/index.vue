@@ -9,6 +9,5 @@ useReveal()
     <ServicesSection />
     <StackBand />
     <ProjectsSection />
-    <ContactSection />
   </div>
 </template>

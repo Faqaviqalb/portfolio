@@ -27,6 +27,9 @@ const paths: Record<string, string> = {
   x: '<path d="M18 6 6 18M6 6l12 12"/>',
   send: '<path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/>',
 }
+
+// Arrows that point "forward" or "back" get mirrored on right-to-left pages.
+const directional = new Set(['arrow-right', 'arrow-up-right', 'chevron-left', 'chevron-right', 'send'])
 </script>
 
 <template>
@@ -38,6 +41,7 @@ const paths: Record<string, string> = {
     stroke-linecap="round"
     stroke-linejoin="round"
     aria-hidden="true"
+    :class="{ 'dir-icon': directional.has(props.name) }"
     v-html="paths[props.name] ?? ''"
   />
 </template>

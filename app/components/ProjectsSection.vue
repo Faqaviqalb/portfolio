@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { projects } from '~/data/site'
+const site = useSite()
+const localePath = useLocalePath()
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
 </script>
 
@@ -7,19 +8,19 @@ const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
   <section id="work" class="section">
     <div class="container">
       <div class="top reveal">
-        <span class="eyebrow">Featured projects</span>
-        <h2 class="section-title">Selected Work</h2>
+        <span class="eyebrow">{{ site.ui.projectsEyebrow }}</span>
+        <h2 class="section-title">{{ site.ui.projectsTitle }}</h2>
       </div>
 
       <div class="grid">
-        <article v-for="(p, i) in projects" :key="p.slug" class="project reveal" :style="{ transitionDelay: `${i * 100}ms` }">
-          <NuxtLink :to="`/projects/${p.slug}`" class="thumb" :aria-label="`${p.title} case study`">
-            <img v-if="p.image" :src="p.image" :alt="`${p.title} screenshot`" loading="lazy" />
+        <article v-for="(p, i) in site.projects" :key="p.slug" class="project reveal" :style="{ transitionDelay: `${i * 100}ms` }">
+          <NuxtLink :to="localePath(`/projects/${p.slug}`)" class="thumb" :aria-label="site.ui.caseStudyOf(p.title)">
+            <img v-if="p.image" :src="p.image" :alt="site.ui.screenshot(p.title)" loading="lazy" />
             <ProjectMock v-else :kind="p.mock" />
           </NuxtLink>
 
           <div class="content">
-            <h3><NuxtLink :to="`/projects/${p.slug}`">{{ p.title }}</NuxtLink></h3>
+            <h3><NuxtLink :to="localePath(`/projects/${p.slug}`)">{{ p.title }}</NuxtLink></h3>
             <p class="subtitle">{{ p.subtitle }}</p>
             <p class="summary">{{ p.summary }}</p>
 
@@ -30,11 +31,11 @@ const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
             <ul class="tags"><li v-for="t in p.tags" :key="t">{{ t }}</li></ul>
 
             <div class="foot">
-              <NuxtLink :to="`/projects/${p.slug}`" class="case">
-                Case study <AppIcon name="arrow-right" />
+              <NuxtLink :to="localePath(`/projects/${p.slug}`)" class="case">
+                {{ site.ui.caseStudy }} <AppIcon name="arrow-right" />
               </NuxtLink>
               <a v-if="p.href" :href="p.href" class="visit" target="_blank" rel="noopener">
-                {{ host(p.href) }} <AppIcon name="arrow-up-right" />
+                <bdi>{{ host(p.href) }}</bdi> <AppIcon name="arrow-up-right" />
               </a>
             </div>
           </div>

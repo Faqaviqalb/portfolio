@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { profile, socials } from '~/data/site'
+const site = useSite()
+const profile = computed(() => site.value.profile)
 </script>
 
 <template>
@@ -15,18 +16,9 @@ import { profile, socials } from '~/data/site'
         <p class="intro">{{ profile.intro }}</p>
 
         <div class="actions">
-          <a href="#work" class="btn btn-primary">View My Work <AppIcon name="arrow-right" /></a>
-          <a v-if="profile.cv" :href="profile.cv" class="btn btn-ghost" download>Download CV <AppIcon name="download" /></a>
-          <a v-else href="#contact" class="btn btn-ghost">Get in Touch <AppIcon name="mail" /></a>
-        </div>
-
-        <div class="connect">
-          <span class="eyebrow small">Let’s connect</span>
-          <div class="icons">
-            <a v-for="s in socials" :key="s.label" :href="s.href" class="icon-circle" :aria-label="s.label" target="_blank" rel="noopener">
-              <AppIcon :name="s.icon" />
-            </a>
-          </div>
+          <a href="#work" class="btn btn-primary">{{ site.ui.viewWork }} <AppIcon name="arrow-right" /></a>
+          <a :href="`mailto:${profile.email}`" class="btn btn-ghost">{{ site.ui.contactMe }} <AppIcon name="mail" /></a>
+          <a v-if="profile.cv" :href="profile.cv" class="btn btn-ghost" download>{{ site.ui.downloadCv }} <AppIcon name="download" /></a>
         </div>
       </div>
 
@@ -34,7 +26,7 @@ import { profile, socials } from '~/data/site'
         <div class="arch">
           <img v-if="profile.photo" :src="profile.photo" :alt="profile.fullName" />
           <div v-else class="placeholder">
-            <span class="mono">{{ profile.name.charAt(0) }}</span>
+            <span class="mono">{{ profile.monogram }}</span>
             <span class="hint">Add your photo in <code>app/data/site.ts</code></span>
           </div>
         </div>
@@ -60,9 +52,6 @@ h1 em { white-space: nowrap; font-style: italic; color: var(--gold); font-weight
 .intro { margin-top: 22px; max-width: 500px; color: var(--muted); font-size: 17px; }
 .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
 
-.connect { margin-top: 44px; }
-.eyebrow.small { font-size: 11px; color: var(--muted); }
-.icons { display: flex; gap: 12px; margin-top: 12px; }
 
 .visual { position: relative; display: flex; justify-content: center; align-items: flex-end; }
 .arch {
@@ -83,7 +72,7 @@ h1 em { white-space: nowrap; font-style: italic; color: var(--gold); font-weight
   padding: 12px 16px 14px; box-shadow: 0 20px 40px -18px rgba(30, 38, 25, .55);
   animation: float 6s ease-in-out infinite;
 }
-.code-card pre { margin: 8px 0 0; font: 12.5px/1.6 ui-monospace, 'SF Mono', Menlo, monospace; }
+.code-card pre { direction: ltr; text-align: left; margin: 8px 0 0; font: 12.5px/1.6 ui-monospace, 'SF Mono', Menlo, monospace; }
 .dots { display: flex; gap: 5px; }
 .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: .8; }
 .dots i:nth-child(2) { background: var(--sage-soft); }

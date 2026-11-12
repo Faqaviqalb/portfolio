@@ -79,11 +79,32 @@ p { margin: 0; }
 .icon-circle:hover { background: var(--sage-dark); color: var(--cream); border-color: var(--sage-dark); }
 .icon-circle svg { width: 17px; height: 17px; }
 
+/* ── Farsi (right-to-left) ─────────────────────────────── */
+html[lang^='fa'] {
+  --serif: 'Estedad', 'DM Sans', Tahoma, sans-serif;
+  --sans: 'Estedad', 'DM Sans', Tahoma, sans-serif;
+}
+html[lang^='fa'] body { line-height: 1.85; }
+html[lang^='fa'] h1, html[lang^='fa'] h2, html[lang^='fa'] h3 { font-weight: 600; line-height: 1.35; }
+/* Persian letters are joined, so letter-spacing and italics break them. */
+html[lang^='fa'] body * { letter-spacing: normal !important; }
+html[lang^='fa'] body em, html[lang^='fa'] body i { font-style: normal; }
+html[lang^='fa'] .eyebrow { font-size: 13px; }
+
+/* Mirror forward/back arrows. `scale` also flips their hover nudge. */
+[dir='rtl'] .dir-icon { scale: -1 1; }
+
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
 
 /* Scroll reveal */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+/* Language switch cross-fade (see useLocaleSwitch) */
+::view-transition-old(root) { animation: .45s ease both lang-out; }
+::view-transition-new(root) { animation: .45s ease both lang-in; }
+@keyframes lang-out { to { opacity: 0; filter: blur(6px); } }
+@keyframes lang-in { from { opacity: 0; filter: blur(6px); } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
